@@ -1,0 +1,9 @@
+.vscode
+copy_from_teach_modrob_v2.bash
+ros2-foxy/ws/build
+ros2-foxy/ws/log
+ros2-foxy/ws/install
+ros2-humble/ws/build
+ros2-humble/ws/log
+ros2-humble/ws/install
+
