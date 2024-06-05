@@ -239,7 +239,7 @@ Then we build and install the plugin
 ```bash
 git clone https://github.com/CoppeliaRobotics/simROS2.git
 export COPPELIASIM_ROOT_DIR=~/path/to/coppeliaSim/folder
-cd sim_ros2_interface
+cd simROS2
 ```
 Before compiling the plugin we need to install some dependencies :
 ```bash
