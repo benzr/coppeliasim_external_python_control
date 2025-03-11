@@ -1,5 +1,29 @@
 # Python control of a robot in CoppeliaSim
 
+Dynamic modelling of robots : how to control the robot from an external program. Two ways are considered : simple socket and ROS2 topics.
+
+## Table of Contents
+1. [CoppeliaSim](#coppeliasim)
+2. [The tricycle robot](#the-tricycle-robot)
+3. [Using a socket](#using-a-socket)
+    - [Server side on CoppeliaSim](#server-side-on-coppeliasim)
+    - [Client side - python control program](#client-side---python-control-program)
+4. [Using ROS2 topics (Humble)](#using-ros2-topics-humble)
+    - [Using ROS2 plugin](#using-ros2-plugin)
+    - [Running the example as a test](#running-the-example-as-a-test)
+    - [Adding a new ROS2 message format](#adding-a-new-ros2-message-format)
+    - [Using two simple topics to control the robot](#using-two-simple-topics-to-control-the-robot)
+    - [Using standard /cmd_vel topic to control the robot](#using-standard-cmd_vel-topic-to-control-the-robot)
+    - [Creating a translation node](#creating-a-translation-node)
+    - [Codes and scenes](#codes-and-scenes)
+5. [Using ROS2 topics (Foxy)](#using-ros2-topics-foxy)
+    - [Using ROS2 plugin](#using-ros2-plugin-1)
+    - [Using two simple topics to control the robot](#using-two-simple-topics-to-control-the-robot-1)
+    - [Using standard /cmd_vel topic to control the robot](#using-standard-cmd_vel-topic-to-control-the-robot-1)
+    - [Compiling CoppeliaSim ROS2 Plugin](#compiling-coppeliasim-ros2-plugin)
+    - [Creating a translation node](#creating-a-translation-node-1)
+    - [Codes and scenes](#codes-and-scenes-1)
+
 ## CoppeliaSim
 CoppeliaSim EDU is an interesting tool to teach how to model dynamically a robot in a virtual environnement. 
 https://www.coppeliarobotics.com/
