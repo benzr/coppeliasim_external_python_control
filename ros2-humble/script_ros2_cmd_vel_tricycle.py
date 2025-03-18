@@ -6,7 +6,7 @@ subscriber_cmd_vel = None
 def subscriber_cmd_vel_callback(msg):
     print (msg.keys()) # for debug (to get the keys of the python dict associated to the topic)
     sim.addLog(sim.verbosity_scriptinfos,'subscriber received cmd_vel : linear='+str(msg['linear'])+', angular='+str(msg['angular']))
-    speed = msg['linear']['x']
+    speed = msg['linear']['x']*5.0
     steering = msg['angular']['z']
     # and apply these commands to the actuators (joints) in CoppeliaSim (/Steering and /FrontMotor)
     sim.setJointTargetPosition(sim.getObject("/Steering"),steering)

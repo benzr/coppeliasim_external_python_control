@@ -162,19 +162,23 @@ The loop terminates when Ctrl-C is typed.
 ## Using ROS2 topics (Humble)
 
 ### Using ROS2 plugin
-We will use version 4.6.0 of CoppeliaSim and the Humble version of ROS2. 
-ROS2 is initialized with (may already be done in .bashrc file) :
+We will use version 4.7.0 of CoppeliaSim and the Humble version of ROS2. 
+You can check the ROS2 version with :
+```bash
+echo $ROS_DISTRO
+```
+ROS2 is initialized with (do not do it if already been done in .bashrc file) :
 ```bash
 source /opt/ros/humble/setup.bash
 ```
 The use of the ROS2 plugin is described here : 
 https://manual.coppeliarobotics.com/en/ros2Tutorial.htm
-We define the path to CoppeliaSim main folder (ex. CoppeliaSim_Edu_V4_6_0_rev18_Ubuntu22_04) :
+We define the path to CoppeliaSim main folder (ex. CoppeliaSim_Edu_V4_7_0_rev4_Ubuntu22_04) :
 ```bash
 export COPPELIASIM_ROOT_DIR=~/path/to/coppeliaSim/folder
 ```
 In the **COPPELIASIM_ROOT_DIR** folder, the ROS2 plugin that interfaces ROS2 to CoppeliSim 
-is a shared library called **libsimROS2.so**. With this plugin, CoppeliaSim will be able to publish and to subscribe to topics. 
+is implemented as a shared library called **libsimROS2.so**. With this plugin, CoppeliaSim will be able to publish and to subscribe to topics. 
 **libsimROS2.so** can be used as it is if we use standard ROS2 message formats in our topics.
 We will see below how to rebuild **libsimROS2.so** with additional ROS2 message formats.
 
@@ -209,7 +213,7 @@ def sysCall_init():
     simROS2 = require('simROS2')
 
     # The child script initialization
-    self.objectHandle = sim.getObject('.')
+    self.objectHandle = sim.getObject('/Ball')
     self.objectAlias = sim.getObjectAlias(self.objectHandle, 3)
     
     # Prepare the float32 publisher and subscriber (we subscribe to the topic we publish):
@@ -238,7 +242,7 @@ with:
 ```python
     self.subscriber = simROS2.createSubscription('/simulationTime', 'std_msgs/msg/Float32', "subscriber_callback")
 ```
-- Comment line 160 in lua/functional.lua file in **COPPELIASIM_ROOT_DIR**:
+- Comment line 145 in lua/functional.lua file in **COPPELIASIM_ROOT_DIR**:
 ```lua
  -- assert(type(getvar(func)) == 'function')
 ```
